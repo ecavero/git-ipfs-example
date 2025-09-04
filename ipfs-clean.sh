@@ -8,8 +8,7 @@ cid=$(ipfs add -Q --pin=true "$tmpfile")
 
 cat <<EOF
 {
-  "cid": "$cid",
-  "filename": "$(basename "$GIT_FILENAME")"
+  "cid": "$cid"
 }
 EOF
 
