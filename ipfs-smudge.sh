@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
-pointer=$(cat)
-
-cid=$(echo "$pointer" | grep -oP '"cid":\s*"\K[^"]+')
-
+cid=$(jq -r .cid)
 ipfs cat "$cid"
