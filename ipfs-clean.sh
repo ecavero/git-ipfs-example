@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
 tmpfile=$(mktemp)
-cat > "$tmpfile"
+# Read stdin into the temp file
+tee "$tmpfile" >/dev/null
 
 cid=$(ipfs add -Q --pin=true "$tmpfile")
 
-cat <<EOF
-{
-  "cid": "$cid"
-}
-EOF
+# Generate JSON safely with jq
+jq -n --arg cid "$cid" '{cid: $cid}'
 
 rm -f "$tmpfile"
