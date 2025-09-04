@@ -1,3 +1,4 @@
 *.png filter=ipfs
 *.jpg filter=ipfs
+*.webp filter=ipfs
 
